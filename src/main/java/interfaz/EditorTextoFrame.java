@@ -160,9 +160,17 @@ public class EditorTextoFrame extends JFrame {
         itemFrecuenciaPalabras.addActionListener(e -> mostrarFrecuenciaPalabras());
         menuAnalizar.add(itemFrecuenciaPalabras);
 
+        JMenuItem itemNuevaVentana = new JMenuItem("Nueva Ventana");
+        itemNuevaVentana.addActionListener(e -> abrirNuevaVentana());
+
         barraMenu.add(menuAnalizar);
 
         setJMenuBar(barraMenu);
+        menuArchivo.add(new JSeparator()); // Añade un separador visual en el menú.
+        menuArchivo.add(itemNuevaVentana);
+    }
+    private void abrirNuevaVentana() {
+        SwingUtilities.invokeLater(() -> new EditorTextoFrame().setVisible(true));
     }
 
     private void contarPalabrasTexto() {
